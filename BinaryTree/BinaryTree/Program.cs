@@ -15,7 +15,8 @@ namespace BinaryTree
             tree.Insert(8);
             tree.Insert(12);
             tree.Insert(11);
-            tree.Delete(20);
+            tree.RandomlyModify(8,50);
+            tree.IsBST();
             Console.WriteLine();
             tree.Print();
             Console.ReadLine();

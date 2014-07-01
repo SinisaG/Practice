@@ -68,6 +68,18 @@ namespace BinaryTree.Model
             root = DeleteGo(root, value);
         }
 
+        public void IsBST()
+        {
+            if (CheckIfSorted(BSTCheck(root, new List<int>())))
+            {
+                Console.WriteLine("Winner, we have a BST!");
+            }
+            else
+            {
+                Console.WriteLine("This makes me a said panda. :(");
+            }
+        }
+
         public void  BreadthFirstSearch()
         {
             var queue = new Queue<BSTNode>();
@@ -89,6 +101,11 @@ namespace BinaryTree.Model
                 Console.WriteLine(temp.Value);
             }
 
+        }
+
+        public void RandomlyModify(int target, int value)
+        {
+            FindNode(root, target).Value = value;
         }
 
         private BSTNode InsertNode(int value, BSTNode N)
@@ -234,9 +251,48 @@ namespace BinaryTree.Model
             return FMax(N.Left);
         }
 
+        private List<int> BSTCheck(BSTNode N, List<int> items)
+        {
+            //preored
+            if (N == null){
+                return items;
+            }
+            BSTCheck(N.Left, items);          
+            items.Add(N.Value);
+            BSTCheck(N.Right, items);
+            return items;
+        }
+
+        private bool CheckIfSorted(List<int> items )
+        {
+            var previous = int.MinValue;
+            foreach (var item in items)
+            {
+                if (item > previous)
+                    previous = item;
+                else
+                    return false;
+            }
+            return true;
+        }
+
         private BSTNode CreateNode(int value)
         {
             return new BSTNode() {Value = value};
+        }
+
+        private BSTNode FindNode(BSTNode N, int value)
+        {
+            if (N == null)
+            {
+                return null;
+            }
+            else if (N.Value > value)
+                return FindNode(N.Left, value);
+            else if (N.Value < value)
+                return FindNode(N.Right, value);
+            else
+                return N;
         }
     }
 }
