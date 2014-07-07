@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+
+
+
 namespace EulerProject.PrimePermutation049
 {
-
 
 /*
     The arithmetic sequence, 1487, 4817, 8147, in which each of the terms increases by 3330, is unusual in two ways: (i) each of the three terms are prime, and, (ii) each of the 4-digit numbers are permutations of one another.
@@ -41,6 +43,7 @@ namespace EulerProject.PrimePermutation049
             Console.Read();
             //we get 2 results, one that is in task description and second one, that we are looking for: 296962999629
         }
+        //numbers can not be equal, so we dont have to check for that
         public static bool IsPerm(int a, int b)
         {
             var tempA = a.ToString();
